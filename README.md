@@ -33,4 +33,4 @@ I used Ion Icons and Icons8 for the icons, but feel free to use fontawesome or a
 - [Awesome Readme Templates](https://awesomeopensource.com/project/elangosundar/awesome-README-templates)
 - [Awesome README](https://github.com/matiassingers/awesome-readme)
 - [How to write a Good readme](https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project)
-- [@koladechris](https://www.twitter.com/koladechris) for initial code foundation
+- [@koladechris](https://www.freecodecamp.org/news/author/kolade/) for initial code foundation
