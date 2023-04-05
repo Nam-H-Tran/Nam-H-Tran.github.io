@@ -151,7 +151,7 @@ nav ul li {
 
 /* Skills section */
 .skills {
-  max-width: 65rem;
+  max-width: 70rem;
   margin: auto;
   text-align: center;
   margin-top: 2.5rem;
@@ -162,13 +162,13 @@ nav ul li {
 }
 
 .skills-wrapper img {
-  padding: 1rem;
+  padding: 1.25rem;
 }
 
 /* Unstyled button to make title look nicer */
 
 .unstyledbutton{
-  max-width: 65rem;
+  max-width: 11.875rem;
   text-align: center;
   border: none;
   background: none;
@@ -178,8 +178,8 @@ nav ul li {
 }
 
 .icon {
-  width: 11rem;
-  height: 10.75rem;
+  width: 11.875rem;
+  height: 11.25rem;
 }
 /* Skills section ends */
 
