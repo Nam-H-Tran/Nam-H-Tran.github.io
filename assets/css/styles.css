@@ -165,11 +165,16 @@ nav ul li {
   padding: 1.25rem;
 }
 
-.img:active:after{
-  content:attr(title);
-  background:lightblue;
-  padding:15px;
-  margin:15px;
+/* Unstyled button to make title look nicer */
+
+.unstyledbutton{
+  max-width: 68.75rem;
+  text-align: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 .icon {
