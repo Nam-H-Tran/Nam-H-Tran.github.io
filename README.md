@@ -2,7 +2,7 @@
 
 ## Tech Stack
 
-**Client:** HTML, CSS, Vanilla JavaSCript
+**Client:** HTML, CSS, Vanilla JavaScript
 
 ## Tools Used
 
