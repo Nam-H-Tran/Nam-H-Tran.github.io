@@ -29,13 +29,3 @@ scrollUp.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
-
-// mobile on click
-$("img[title]").click(function () {
-  var $title = $(this).find(".title");
-  if (!$title.length) {
-    $(this).append('<img class="title">' + $(this).attr("title") + '</img>');
-  } else {
-    $title.remove();
-  }
-});​
