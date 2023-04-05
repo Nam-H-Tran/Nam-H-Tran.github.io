@@ -165,20 +165,12 @@ nav ul li {
   padding: 1.25rem;
 }
 
-.tooltip {
-    position: relative;
-    cursor: pointer;
- }
-
-.tooltip .title-info {
-    position: absolute;
-    top: 25px;
-    background: purple;
-    color: #fff;
-    padding: 4px;
-    left: 0;
-    white-space: nowrap;
-  }
+.img:active:after{
+  content:attr(title);
+  background:lightblue;
+  padding:15px;
+  margin:15px;
+}
 
 .icon {
   width: 11.875rem;

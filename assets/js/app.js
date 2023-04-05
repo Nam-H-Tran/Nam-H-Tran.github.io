@@ -29,12 +29,3 @@ scrollUp.addEventListener("click", () => {
     behavior: "smooth",
   });
 });
-
-$(".tooltip").click(function () {
-    var $title = $(this).find(".title-info");
-    if (!$title.length) {
-        $(this).append('<span class="title-info">' + $(this).attr("title") + '</span>');
-    } else {
-        $title.remove();
-    }
-});
