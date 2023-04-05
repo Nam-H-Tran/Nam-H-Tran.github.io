@@ -145,7 +145,7 @@ nav ul li {
 
 .more-about p {
   line-height: var(--line-height);
-  padding: 0.4rem;
+  padding: 0.3rem 0;
 }
 /* More about ends */
 
