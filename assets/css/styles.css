@@ -145,7 +145,7 @@ nav ul li {
 
 .more-about p {
   line-height: var(--line-height);
-  padding: 0.3rem 0;
+  padding: 0.4rem;
 }
 /* More about ends */
 
@@ -163,6 +163,10 @@ nav ul li {
 
 .skills-wrapper img {
   padding: 1.25rem;
+}
+
+.element:active:after{
+  content:attr(title);
 }
 
 .icon {
