@@ -299,6 +299,7 @@ nav ul li {
   font-size: 1.125rem;
   font-weight: var(--bold-font);
   transition: var(--transition);
+  color: black;
 }
 
 .submit-btn:hover {
