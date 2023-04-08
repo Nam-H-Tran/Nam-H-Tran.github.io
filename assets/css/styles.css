@@ -101,6 +101,17 @@ nav ul li {
 /* Navbar ends */
 
 /* Hero section */
+
+.embed {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+    padding-bottom: 30.25%;
+    padding-top: 30.25%;
+    height: 0;
+    overflow: hidden;
+}
+
 .hero {
   display: flex;
   align-items: center;
