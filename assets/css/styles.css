@@ -102,14 +102,20 @@ nav ul li {
 
 /* Hero section */
 
-.embed {
-    display: flex;
-	align-items: center;
-	justify-content: center;
-    padding-bottom: 20.0%;
-    padding-top: 22.5%;
+
+.graph-container {
+    position: relative;
+    padding-bottom: 75%;
     height: 0;
     overflow: hidden;
+}
+
+.graph-container iframe {
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .video-container {
