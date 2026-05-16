@@ -1,13 +1,789 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nam H. Tran — Integration Program Manager</title>
-    <meta name="description" content="PMP | Integration Program Manager | Energy & Utility Platforms" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nam H. Tran — Integration Program Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Mono:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:      #0b0e13;
+    --bg2:     #111520;
+    --card:    #131823;
+    --line:    rgba(255,255,255,0.07);
+    --accent:  #00e5c3;
+    --accent2: #4f7fff;
+    --text:    #e8ecf4;
+    --muted:   #6b7794;
+    --sub:     #8d98b4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ───────────────────────────────────── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    background: rgba(11,14,19,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+    gap: 1rem;
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .nav-links {
+    display: flex;
+    gap: 1.8rem;
+    align-items: center;
+  }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* Hamburger — hidden on desktop */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--muted);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  /* Mobile drawer */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(11,14,19,0.97);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:last-child { border-bottom: none; }
+  .mobile-menu a:hover { color: var(--accent); }
+
+  /* ── HERO ──────────────────────────────────── */
+  .hero {
+    padding: 3.5rem 1.25rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  /* decorative orbs */
+  .hero::before, .hero::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    pointer-events: none;
+  }
+  .hero::before {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(0,229,195,0.13) 0%, transparent 70%);
+    top: -40px; right: -60px;
+  }
+  .hero::after {
+    width: 240px; height: 240px;
+    background: radial-gradient(circle, rgba(79,127,255,0.1) 0%, transparent 70%);
+    bottom: 0; right: 30%;
+  }
+
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 22px; height: 1px;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.8rem, 10vw, 5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.6rem;
+  }
+  .hero-name .accent { color: var(--accent); }
+  .hero-subtitle {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--sub);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* ── BUTTONS ───────────────────────────────── */
+  .btn-primary, .btn-secondary, .btn-resume {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary  { background: var(--accent); color: #050709; border: none; }
+  .btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+  .btn-secondary { border: 1px solid var(--line); color: var(--muted); }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-resume   { border: 1px solid rgba(0,229,195,0.35); color: var(--accent); }
+  .btn-resume:hover { border-color: var(--accent); }
+
+  /* ── STATS GRID ────────────────────────────── */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    padding: 1.5rem 1.25rem 2.5rem;
+  }
+  .stat {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.1rem 1.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .stat::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .stat-value {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── DIVIDER ───────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line), transparent);
+  }
+
+  /* ── SECTIONS ──────────────────────────────── */
+  section { padding: 3.5rem 1.25rem; }
+  section.alt { background: var(--bg2); }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .section-label::after {
+    content: '';
+    display: inline-block;
+    width: 30px; height: 1px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 5vw, 2.4rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+  }
+
+  /* ── EXPERIENCE ────────────────────────────── */
+  .exp-list { border-top: 1px solid var(--line); }
+  .exp-item {
+    padding: 1.75rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .exp-meta {
+    margin-bottom: 0.6rem;
+  }
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.2rem;
+  }
+  .exp-company {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  .exp-role {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+  .exp-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .exp-bullets li {
+    font-size: 0.85rem;
+    font-weight: 300;
+    color: var(--sub);
+    padding-left: 1.1rem;
+    position: relative;
+    line-height: 1.7;
+  }
+  .exp-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.72rem;
+  }
+  .exp-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.9rem;
+  }
+  .tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--accent2);
+    background: rgba(79,127,255,0.08);
+    border: 1px solid rgba(79,127,255,0.22);
+    padding: 0.2rem 0.55rem;
+    letter-spacing: 0.04em;
+    border-radius: 2px;
+  }
+
+  /* ── SKILLS ────────────────────────────────── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.3rem 1.2rem;
+    transition: border-color 0.25s;
+  }
+  .skill-card:hover { border-color: rgba(0,229,195,0.3); }
+  .skill-icon { font-size: 1.25rem; margin-bottom: 0.65rem; }
+  .skill-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--text);
+    margin-bottom: 0.55rem;
+  }
+  .skill-items {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--muted);
+    line-height: 1.85;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── EDUCATION ─────────────────────────────── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .edu-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 1.4rem 1.5rem;
+  }
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .edu-school {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.64rem;
+    color: var(--muted);
+  }
+  .cert-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-top: 1rem;
+  }
+  .cert-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 0.65rem 1rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.67rem;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+  .cert-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    box-shadow: 0 0 6px var(--accent);
+  }
+
+  /* ── CONTACT ───────────────────────────────── */
+  .contact-wrap { max-width: 500px; margin: 0 auto; text-align: center; }
+  .contact-desc {
+    font-size: 0.92rem;
+    font-weight: 300;
+    color: var(--sub);
+    margin-bottom: 1.8rem;
+    line-height: 1.8;
+  }
+  .contact-links { display: flex; flex-direction: column; gap: 0.6rem; align-items: center; }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 0.25rem 0;
+  }
+  .contact-link:hover { color: var(--accent); }
+  .contact-link .icon { color: var(--accent); opacity: 0.7; }
+
+  /* ── FOOTER ────────────────────────────────── */
+  footer {
+    border-top: 1px solid var(--line);
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .footer-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.76rem;
+    color: var(--muted);
+  }
+  .footer-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem;
+    color: var(--muted);
+    opacity: 0.45;
+  }
+
+  /* ── SCROLL REVEAL ─────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ── DESKTOP OVERRIDES (640px+) ────────────── */
+  @media (min-width: 640px) {
+    nav { padding: 1.1rem 2.5rem; }
+    .hamburger { display: none !important; }
+    .nav-links { display: flex !important; }
+
+    .hero { padding: 5rem 3rem 2.5rem; }
+    section { padding: 5rem 3rem; }
+
+    .stats-grid { padding: 2rem 3rem 3rem; gap: 1rem; }
+
+    .edu-grid { grid-template-columns: 1fr 1fr; }
+
+    /* side-by-side exp layout */
+    .exp-item { display: grid; grid-template-columns: 175px 1fr; gap: 1.5rem; }
+    .exp-meta { padding-top: 0.15rem; }
+  }
+
+  @media (min-width: 900px) {
+    nav { padding: 1.2rem 3.5rem; }
+    section { padding: 6rem 3.5rem; }
+    .stats-grid { padding: 2rem 3.5rem 3rem; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  /* ── MOBILE NAV SHOW/HIDE ──────────────────── */
+  @media (max-width: 639px) {
+    .hamburger { display: flex; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">NT</span>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <button class="hamburger" id="menu-btn" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#experience" class="menu-close">Experience</a>
+  <a href="#skills"     class="menu-close">Skills</a>
+  <a href="#education"  class="menu-close">Education</a>
+  <a href="#contact"    class="menu-close">Contact</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">PMP · Integration Program Manager</div>
+  <h1 class="hero-name">Nam H.<br><span class="accent">Tran</span></h1>
+  <p class="hero-subtitle">MBA · MSAE · Energy &amp; Utility Platforms</p>
+  <p class="hero-desc">
+    Delivering enterprise platform programs at scale — from cloud migrations and SaaS integrations to DER dispatch systems. Based in Orlando, FL.
+  </p>
+  <div class="hero-cta">
+    <a href="#experience" class="btn-primary">View Experience</a>
+    <a href="#contact"    class="btn-secondary">Get in Touch</a>
+    <a href="Nam_Tran_Resume_.pdf" download class="btn-resume">↓ Resume</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-grid">
+  <div class="stat reveal">
+    <div class="stat-value">4M+</div>
+    <div class="stat-label">End Users Served</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-value">8</div>
+    <div class="stat-label">Concurrent Workstreams</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-value">$10M+</div>
+    <div class="stat-label">Max Program Budget</div>
+  </div>
+  <div class="stat reveal">
+    <div class="stat-value">30%</div>
+    <div class="stat-label">Defect Reduction</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section class="alt" id="experience">
+  <div class="section-label">Work History</div>
+  <h2 class="section-title">Experience</h2>
+
+  <div class="exp-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Jul 2025 – Present</div>
+        <div class="exp-company">Hexure</div>
+      </div>
+      <div>
+        <div class="exp-role">Project Manager, New Products &amp; Platform Solutions</div>
+        <ul class="exp-bullets">
+          <li>Governing end-to-end delivery of 3 concurrent enterprise platform migrations from on-premises to Azure Cloud across a 6–8 month lifecycle per engagement.</li>
+          <li>Reduced contract-to-launch lead time by 10% through a standardized onboarding playbook with phased milestones, dependency maps, and RACI matrices across 5 active programs.</li>
+          <li>Achieved 20% reduction in production defects via structured defect triage and weekly KPI dashboards; managing budgets of $1.5M–$3M and mentoring 2 associate PMs.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Azure Cloud</span>
+          <span class="tag">Platform Migration</span>
+          <span class="tag">KPI Dashboards</span>
+          <span class="tag">RACI</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Nov 2023 – Jun 2025</div>
+        <div class="exp-company">Uplight</div>
+      </div>
+      <div>
+        <div class="exp-role">Project Manager, Energy Platform Products</div>
+        <ul class="exp-bullets">
+          <li>Managed 8 concurrent integration workstreams for 2 enterprise SaaS platforms serving 4M+ end users with zero unplanned outages during major release cycles.</li>
+          <li>Developed a repeatable integration playbook for CIS, DERMS, and OpenADR dispatch, reducing average client onboarding time by 3 weeks across 5 programs.</li>
+          <li>Championed third-party DER vendor integrations (smart thermostats, EVs, BESS) against IEEE 2030.5 standards; vendor governance cut defects by 30%.</li>
+          <li>Reduced QA cycle times by 10% through restructured regression planning and automated smoke test gates across 3 consecutive release cycles.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">DERMS</span>
+          <span class="tag">OpenADR</span>
+          <span class="tag">IEEE 2030.5</span>
+          <span class="tag">DER Integration</span>
+          <span class="tag">SaaS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2021 – May 2022</div>
+        <div class="exp-company">Revalize</div>
+      </div>
+      <div>
+        <div class="exp-role">Project Manager, Enterprise SaaS Implementations</div>
+        <ul class="exp-bullets">
+          <li>Managed 6 simultaneous enterprise SaaS implementation projects totaling $4M+ in contracted value, driving a 12% profit margin increase through scope discipline.</li>
+          <li>Built a reusable implementation playbook with Epic/Story/Task hierarchies adopted org-wide, cutting average project setup time by 2 weeks.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Enterprise SaaS</span>
+          <span class="tag">Agile</span>
+          <span class="tag">Scope Management</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-date">Jan 2019 – Sep 2021</div>
+        <div class="exp-company">Aerojet Rocketdyne</div>
+      </div>
+      <div>
+        <div class="exp-role">Systems Engineer / Project Coordinator, R&amp;D Programs</div>
+        <ul class="exp-bullets">
+          <li>Coordinated 4 concurrent R&D delivery programs with combined budgets exceeding $10M, producing monthly EAC variance reports for program directors and government clients.</li>
+          <li>Championed 3 process improvement initiatives that reduced schedule variance by 8% across active workstreams.</li>
+        </ul>
+        <div class="exp-tags">
+          <span class="tag">Systems Engineering</span>
+          <span class="tag">EAC Tracking</span>
+          <span class="tag">R&amp;D Programs</span>
+          <span class="tag">Government Contracts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Core Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-title">Energy &amp; Utility Platforms</div>
+      <div class="skill-items">DERMS · OpenADR · IEEE 2030.5<br>DER Integration · CIS Systems<br>Demand Response · BESS · EV</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🔄</div>
+      <div class="skill-title">Integration Management</div>
+      <div class="skill-items">API Scoping · Sandbox Provisioning<br>Regression Testing · Smoke Tests<br>Vendor Governance · SLA Mgmt</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">☁️</div>
+      <div class="skill-title">Cloud &amp; SaaS Delivery</div>
+      <div class="skill-items">Azure Cloud Migration<br>Enterprise SaaS Implementation<br>Platform Onboarding · CI/CD</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📋</div>
+      <div class="skill-title">Program Management</div>
+      <div class="skill-items">PMP · RACI · Project Charters<br>Risk Registers · EAC Tracking<br>Milestone Sign-offs · Agile</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">📊</div>
+      <div class="skill-title">Operations &amp; Analytics</div>
+      <div class="skill-items">KPI Dashboards · Defect Triage<br>Lean Six Sigma · Variance Reports<br>Budget Management · Forecasting</div>
+    </div>
+    <div class="skill-card reveal">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-title">Stakeholder Leadership</div>
+      <div class="skill-items">Executive Communication<br>Cross-functional Coordination<br>Client Onboarding · Mentorship</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EDUCATION -->
+<section class="alt" id="education">
+  <div class="section-label">Academic &amp; Credentials</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">Master of Business Administration</div>
+      <div class="edu-school">University of Central Florida</div>
+      <div class="edu-year">2023</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">MS / BS, Aerospace Engineering</div>
+      <div class="edu-school">University of Central Florida</div>
+      <div class="edu-year">2021 / 2019</div>
+    </div>
+  </div>
+  <div class="cert-row reveal">
+    <div class="cert-badge"><span class="cert-dot"></span>PMP — Project Management Professional</div>
+    <div class="cert-badge"><span class="cert-dot"></span>Lean Six Sigma Green Belt</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="section-label" style="justify-content:center">Let's Connect</div>
+    <h2 class="section-title">Contact</h2>
+    <p class="contact-desc">Open to integration program leadership roles, energy platform projects, and enterprise SaaS delivery opportunities.</p>
+    <div class="contact-links">
+      <a href="mailto:nhtranaero@gmail.com" class="contact-link">
+        <span class="icon">✉</span> nhtranaero@gmail.com
+      </a>
+      <a href="tel:9418403956" class="contact-link">
+        <span class="icon">☎</span> (941) 840-3956
+      </a>
+      <a href="https://linkedin.com/in/nam-tran-pmp" target="_blank" class="contact-link">
+        <span class="icon">in</span> linkedin.com/in/nam-tran-pmp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Nam H. Tran · Orlando, FL</span>
+  <span class="footer-note">PMP · MBA · MSAE</span>
+</footer>
+
+<script>
+  // Hamburger menu
+  const menuBtn  = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  document.querySelectorAll('.menu-close').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 70);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
 </html>
